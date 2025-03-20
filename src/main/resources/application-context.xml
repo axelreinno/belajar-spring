@@ -12,47 +12,7 @@
         <constructor-arg name="author" ref="author"/>
     </bean>
 
-    <!--    <bean id="mailSession" class="jakarta.mail.Session">-->
-    <!--        <constructor-arg>-->
-    <!--            <props>-->
-    <!--                <prop key="mail.smtp.auth">true</prop>-->
-    <!--                <prop key="mail.smtp.starttls.enable">true</prop>-->
-    <!--                <prop key="mail.smtp.host">sandbox.smtp.mailtrap.io</prop>-->
-    <!--                <prop key="mail.smtp.port">25</prop>-->
-    <!--                <prop key="mail.smtp.ssl.trust">sandbox.smtp.mailtrap.io</prop>-->
-    <!--            </props>-->
-    <!--        </constructor-arg>-->
-    <!--        <constructor-arg>-->
-    <!--            <bean class="jakarta.mail.Authenticator">-->
-    <!--                <lookup-method name="getPasswordAuthentication" bean="passwordAuthentication" />-->
-    <!--            </bean>-->
-    <!--        </constructor-arg>-->
-    <!--    </bean>-->
-
-        <bean id="passwordAuthentication" class="jakarta.mail.PasswordAuthentication">
-            <constructor-arg value="d1268cdd35952e"/>
-            <constructor-arg value="34ff9375651117"/>
-        </bean>
-
-    <bean id="emailService" class="com.academy.services.EmailService">
-        <constructor-arg>
-            <props>
-                <prop key="username">d1268cdd35952e</prop>
-                <prop key="password">34ff9375651117</prop>
-                <prop key="host">sandbox.smtp.mailtrap.io</prop>
-                <prop key="port">25</prop>
-            </props>
-        </constructor-arg>
-        <constructor-arg ref="sessionService"/>
-
-
-<!--        <constructor-arg ref="sandbox.smtp.mailtrap.io"/>-->
-<!--        <constructor-arg ref="25"/>-->
-<!--        <constructor-arg value="d1268cdd35952e"/>-->
-<!--        <constructor-arg value="34ff9375651117"/>-->
-    </bean>
-
-    <bean id="sessionService" class="com.academy.services.SessionService">
+    <bean id="mailSession" class="jakarta.mail.Session">
         <constructor-arg>
             <props>
                 <prop key="mail.smtp.auth">true</prop>
@@ -68,4 +28,30 @@
             </bean>
         </constructor-arg>
     </bean>
+
+    <bean id="passwordAuthentication" class="jakarta.mail.PasswordAuthentication">
+        <constructor-arg value="d1268cdd35952e"/>
+        <constructor-arg value="34ff9375651117"/>
+    </bean>
+
+    <bean id="emailService" class="com.academy.services.EmailService">
+        <constructor-arg ref="mailSession"/>
+    </bean>
+
+    <!--    <bean id="sessionService" class="com.academy.services.SessionService">-->
+    <!--        <constructor-arg>-->
+    <!--            <props>-->
+    <!--                <prop key="mail.smtp.auth">true</prop>-->
+    <!--                <prop key="mail.smtp.starttls.enable">true</prop>-->
+    <!--                <prop key="mail.smtp.host">sandbox.smtp.mailtrap.io</prop>-->
+    <!--                <prop key="mail.smtp.port">25</prop>-->
+    <!--                <prop key="mail.smtp.ssl.trust">sandbox.smtp.mailtrap.io</prop>-->
+    <!--            </props>-->
+    <!--        </constructor-arg>-->
+    <!--        <constructor-arg>-->
+    <!--            <bean class="jakarta.mail.Authenticator">-->
+    <!--                <lookup-method name="getPasswordAuthentication" bean="passwordAuthentication"/>-->
+    <!--            </bean>-->
+    <!--        </constructor-arg>-->
+    <!--    </bean>-->
 </beans>
