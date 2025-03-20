@@ -5,7 +5,9 @@ import jakarta.mail.internet.InternetAddress;
 import jakarta.mail.internet.MimeBodyPart;
 import jakarta.mail.internet.MimeMessage;
 import jakarta.mail.internet.MimeMultipart;
+import org.springframework.stereotype.Service;
 
+@Service
 public class EmailService {
     private Session session;
 

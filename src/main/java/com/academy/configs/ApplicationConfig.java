@@ -9,17 +9,21 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 
 import jakarta.mail.PasswordAuthentication;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
 
 import java.util.Properties;
 
+@ComponentScan(basePackages = {"com.academy"})
+@Configuration
 public class ApplicationConfig {
-    @Bean
-    public Author author() {
-        Author author = new Author();
-        author.setId(1);
-        author.setName("Axel");
-        return author;
-    }
+//    @Bean
+//    public Author author() {
+//        Author author = new Author();
+//        author.setId(1);
+//        author.setName("Axel");
+//        return author;
+//    }
 
     @Bean
     public Book book(Author author) {
@@ -53,8 +57,8 @@ public class ApplicationConfig {
         });
     }
 
-    @Bean
-    public EmailService emailService(Session mailSession) {
-        return new EmailService(mailSession);
-    }
+//    @Bean
+//    public EmailService emailService(Session mailSession) {
+//        return new EmailService(mailSession);
+//    }
 }
